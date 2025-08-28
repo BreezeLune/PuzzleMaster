@@ -1,0 +1,84 @@
+<!-- 顶部导航 -->
+<div class="page-title">
+    <i class="fa fa-arrow-left back-btn" onclick="window.location.href='menu.html'"></i>
+    <span>创建自定义拼图</span>
+    <button id="savePuzzleBtn" class="btn btn-primary" style="margin-left: auto; opacity: 0.5; cursor: not-allowed;" disabled>保存拼图</button>
+</div>
+
+<!-- 主体内容（左侧上传+配置，右侧预览） -->
+<div style="display: flex; gap: 24px; flex-wrap: wrap;">
+    <!-- 左侧：上传+配置 -->
+    <div style="flex: 1; min-width: 300px;">
+        <!-- 图片上传 -->
+        <div class="card" style="margin-bottom: 24px;">
+            <h3 style="font-size: 16px; margin-bottom: 16px;">上传图片</h3>
+            <div class="upload-box" style="border: 2px dashed #E5E7EB; border-radius: 8px; padding: 40px; text-align: center; cursor: pointer;">
+                <i class="fa fa-cloud-upload" style="font-size: 32px; color: #165DFF; margin-bottom: 12px;"></i>
+                <p style="font-size: 14px; color: #666;">点击或拖拽图片上传（JPG/PNG，最大5MB）</p>
+                <input type="file" id="imgUpload" style="display: none;" accept="image/jpeg,image/png">
+            </div>
+            <!-- 上传后预览（默认隐藏） -->
+            <div id="imgPreview" style="margin-top: 16px; display: none;">
+                <img id="previewImg" style="width: 100%; border-radius: 4px;" alt="预览图">
+                <button class="btn btn-default" style="margin-top: 10px; padding: 6px 12px; font-size: 12px;">裁剪图片</button>
+            </div>
+        </div>
+
+        <!-- 拼图配置 -->
+        <div class="card">
+            <h3 style="font-size: 16px; margin-bottom: 16px;">拼图配置</h3>
+            <div class="input-item">
+                <label>拼图名称（4-20字符）</label>
+                <input type="text" id="puzzleName" placeholder="为你的拼图命名">
+                <div class="error-tip" id="nameError">请输入4-20字符的名称</div>
+            </div>
+            <div class="input-item">
+                <label>拼图块数</label>
+                <select id="pieceCount">
+                    <option value="4">4块（2×2）</option>
+                    <option value="9">9块（3×3）</option>
+                    <option value="16" selected>16块（4×4）</option>
+                    <option value="25">25块（5×5）</option>
+                    <option value="36">36块（6×6）</option>
+                    <option value="64">64块（8×8）</option>
+                </select>
+            </div>
+            <div class="input-item">
+                <label>拼图形状</label>
+                <div style="display: flex; gap: 20px;">
+                    <label style="display: flex; align-items: center; gap: 6px;">
+                        <input type="radio" name="shape" value="rect" checked> 常规矩形
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 6px;">
+                        <input type="radio" name="shape" value="irregular"> 不规则异形
+                    </label>
+                </div>
+                <div id="shapePreview" style="margin-top: 10px; display: none;">
+                    <img src="../images/irregular_shape.png" alt="异形预览" style="width: 100px; height: 100px;">
+                </div>
+            </div>
+            <div class="input-item">
+                <label>是否随机旋转图块</label>
+                <label style="display: flex; align-items: center; gap: 6px;">
+                    <input type="checkbox" id="isRotate"> 是（增加难度）
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- 右侧：预览区 -->
+    <div style="flex: 1; min-width: 300px;">
+        <div class="card" style="height: 100%;">
+            <h3 style="font-size: 16px; margin-bottom: 16px;">拼图预览</h3>
+            <div id="previewArea" style="min-height: 300px; display: flex; justify-content: center; align-items: center; background-color: #F9FAFB; border-radius: 4px;">
+                <p style="color: #666;">上传图片并完成配置后，此处显示预览</p>
+            </div>
+            <div style="margin-top: 16px; text-align: right;">
+                <p style="font-size: 14px; color: #666;">预计难度：<span id="difficulty">简单</span></p>
+            </div>
+            <div style="margin-top: 20px; text-align: center;">
+                <button id="startCustomGameBtn" class="btn btn-primary" disabled>开始游戏</button>
+            </div>
+        </div>
+    </div>
+</div>
