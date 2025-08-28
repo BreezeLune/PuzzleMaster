@@ -1,9 +1,9 @@
 const puzzleBoard = document.getElementById('puzzleBoard');
 const piecesZone = document.getElementById('piecesZone');
-const imageUpload = document.getElementById('imageUpload');
+//const imageUpload = document.getElementById('imageUpload');
 const startBtn = document.getElementById('startBtn');
 const resetBtn = document.getElementById('resetBtn');
-const difficultySelect = document.getElementById('difficultySelect');
+//const difficultySelect = document.getElementById('difficultySelect');
 const timerElement = document.getElementById('timer');
 const movesElement = document.getElementById('moves');
 const gameComplete = document.getElementById('gameComplete');
@@ -23,12 +23,12 @@ let draggedPiece = null;
 let bgVisible = true;
 
 // 事件监听器
-imageUpload.addEventListener('change', handleImageUpload);
-startBtn.addEventListener('click', startGame);
-resetBtn.addEventListener('click', resetGame);
-difficultySelect.addEventListener('change', () => {
-    difficulty = parseInt(difficultySelect.value);
-});
+//imageUpload.addEventListener('change', handleImageUpload);
+//startBtn.addEventListener('click', startGame);
+//resetBtn.addEventListener('click', resetGame);
+//difficultySelect.addEventListener('change', () => {
+//    difficulty = parseInt(difficultySelect.value);
+//});
 playAgainBtn.addEventListener('click', () => {
     gameComplete.style.display = 'none';
     resetGame();
@@ -265,3 +265,19 @@ function touchEnd(e) {
 
 // 初始化背景
 setPuzzleBg();
+
+
+window.addEventListener('DOMContentLoaded', function() {
+    const customImage = localStorage.getItem('customImage');
+    const customSize = localStorage.getItem('customSize');
+    if (customImage && customSize) {
+        originalImageUrl = customImage;
+        difficulty = parseInt(customSize);
+        setPuzzleBg();
+        startGame();
+        localStorage.removeItem('customImage');
+        localStorage.removeItem('customSize');
+    } else {
+        setPuzzleBg();
+    }
+});
