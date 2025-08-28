@@ -181,3 +181,7 @@ h1 {
     }
 }
 
+.pieces-zone .puzzle-piece {
+    margin: 0;
+    /* Elimina el gap extra */
+}
