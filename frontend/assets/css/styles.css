@@ -184,6 +184,7 @@ h1 {
 .pieces-zone .puzzle-piece {
     margin: 0;
     /* Elimina el gap extra */
+
 }
   {
         margin: 0;
@@ -225,3 +226,4 @@ h1 {
         text-align: center;
         padding: 50px;
       }
+
